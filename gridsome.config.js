@@ -1,4 +1,4 @@
-// This is where project configuration and plugin options are located. 
+// This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
 
 // Changes here require a server restart.
@@ -6,5 +6,13 @@
 
 module.exports = {
   siteName: 'Gridsome',
-  plugins: []
-}
+  plugins: [
+    {
+      use: '~/src/sources/products',
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        base: process.env.AIRTABLE_BASE_ID
+      }
+    }
+  ]
+};
