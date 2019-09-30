@@ -1,3 +1,4 @@
+// src/components.ProductPreview.vue
 <template>
   <article>
     <g-link :to="product.path">
@@ -15,10 +16,12 @@
 
 <script>
 import BuyButton from "./BuyButton";
+
 function makeExcerpt(str, len) {
   var words = str.substr(0, len).split(" ");
   return words.slice(0, words.length - 1).join(" ") + "…";
 }
+
 export default {
   name: "ProductPreview",
   props: ["product"],
@@ -28,10 +31,10 @@ export default {
   data() {
     return {
       excerpt: makeExcerpt(this.product.content, 125),
-      image: this.product.picture.length
+      image: this.product.fields.Images.length
         ? {
-            name: this.product.picture[0].filename,
-            url: this.product.picture[0].thumbnails.large.url.src
+            name: this.product.field.Images[0].filename,
+            url: this.product.field.Images[0].thumbnails.large.url.src
           }
         : null
     };
